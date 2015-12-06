@@ -23,6 +23,9 @@ MyWidget::MyWidget(QWidget *parent) : QWidget(parent)
 
     view->setScene(scene = new QGraphicsScene);
 
+    //设置QGraphicsView为背景透明，结合paintEvent可以实现两层效果
+    view->setStyleSheet("background: transparent");
+
     scene->setSceneRect(0,0,480,272);
 
     scene->addItem(lineItem = new QGraphicsLineItem(0, 0, 200, 200));
@@ -64,7 +67,8 @@ MyWidget::MyWidget(QWidget *parent) : QWidget(parent)
 
 void MyWidget::paintEvent(QPaintEvent *)
 {
-
+    QPainter p(this);
+    p.drawLine(100,200,200,300);
 }
 
 void MyWidget::resizeEvent(QResizeEvent *)
