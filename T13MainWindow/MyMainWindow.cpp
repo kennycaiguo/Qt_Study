@@ -61,6 +61,7 @@ void MyMainWindow::paintEvent(QPaintEvent *)
     p.drawText(10,10,"hello world");
 }
 
+//右键弹出菜单栏
 void MyMainWindow::mousePressEvent(QMouseEvent *ev)
 {
     if(ev->button() == Qt::RightButton)
