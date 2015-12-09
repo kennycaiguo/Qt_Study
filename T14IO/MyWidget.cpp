@@ -20,6 +20,11 @@
  * QTextStream
 */
 
+#include "TcpServer.h"
+#include "TcpClient.h"
+#include "Udp1.h"
+#include "Udp2.h"
+
 MyWidget::MyWidget(QWidget *parent) : QWidget(parent)
 {
 #if 0
@@ -85,7 +90,6 @@ MyWidget::MyWidget(QWidget *parent) : QWidget(parent)
 #if 0
     QFile file("../T14IO/dataStream.txt");
     file.open(QIODevice::ReadWrite);
-
     QDataStream dataStream(&file);
 
     int i;
@@ -128,8 +132,24 @@ int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
 
-    MyWidget w;
-    w.show();
+#if 0
+   // MyWidget w;
+   // w.show();
+    TcpServer s;
+    s.show();
+    s.setWindowTitle("server");
+
+    TcpClient c;
+    c.show();
+    c.setWindowTitle("client");
+#endif
+
+    Udp1 udp1;
+    udp1.show();
+    udp1.setWindowTitle("UDP1");
+    Udp2 udp2;
+    udp2.show();
+    udp2.setWindowTitle("UDP2");
 
     return app.exec();
 }
